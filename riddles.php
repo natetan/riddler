@@ -2,7 +2,6 @@
 print "this works";
 $riddle_file = "riddles.txt";
 $riddles = explode("\n", file_get_contents($riddle_file));
-print var_dump($riddles);
 $data;
 $riddle_count = 0;
 $answer_count = 0;
@@ -18,6 +17,7 @@ foreach ($riddles as $riddle) {
 	$answer_count += 2;
 	$riddle_number++;
 }
+print var_dump($data);
 header("Content-type: application/json");
 print json_encode($data);
 
