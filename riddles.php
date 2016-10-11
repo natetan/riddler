@@ -11,7 +11,7 @@ foreach ($riddles as $riddle) {
 	$count++;
 }
 
-for ($i = 0; $i < $count; $i++) {
+for ($i = 0; $i < $count / 2; $i++) {
 	$data[] = array (
 		"riddle" => $riddles[$riddle_count],
 		"answer" => $riddles[$answer_count],
