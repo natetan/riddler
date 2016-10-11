@@ -23,7 +23,7 @@
 		document.querySelector('#start').classList.add('hide');
 		document.querySelector('#answer').classList.remove('hide');
 		document.querySelector('#next').classList.remove('hide');
-		var text = getRandomRiddle();
+		var text = getRandomRiddle().riddle;
 		console.log(text);
 		document.querySelector('#riddle').innerHTML = text;
 		console.log(riddles.length);
