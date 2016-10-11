@@ -46,6 +46,7 @@
 		console.log('get rand');
 		console.log(riddles.length);
 		var random = Math.floor(Math.random() * (riddles.length));
+		console.log(random);
 		console.log(riddles[random]);
 		return riddles[random];
 	}
