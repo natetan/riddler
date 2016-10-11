@@ -1,7 +1,8 @@
 <?php
-
+print "this works";
 $riddle_file = "riddles.txt";
 $riddles = explode("\n", file_get_contents($riddle_file));
+print var_dump($riddles);
 $data;
 $riddle_count = 0;
 $answer_count = 0;
