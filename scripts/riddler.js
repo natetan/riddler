@@ -1,10 +1,12 @@
 (function() {
 	'use strict';
 
-	var riddles;
+	var riddles = new Array();
+	var currentRiddle;
 
 	window.onload = function() {
-		storeRiddles();
+		makeAjaxRequest("riddles.php", storeRiddles);
+		document.querySelector('#riddle').innerHTML = getRandomRiddle();
 	};
 
 	function makeAjaxRequest(url, methodName) {
@@ -15,10 +17,9 @@
 	}
 
 	function storeRiddles() {
-		riddles = new Array();
 		var data = JSON.parse(this.responseText);
 		for (var i = 0; i < data.length; i++) {
-			riddles[i] = new riddle(riddles[i].riddle, riddles[i].answer, riddles[i].number);
+			riddles[i] = new riddle(riddles[i].riddle, riddles[i].answer, riddles[i].number );
 		}
 	}
 
@@ -26,6 +27,11 @@
 		this.riddle = riddle;
 		this.answer = answer;
 		this.number = number;
+	}
+
+	function getRandomRiddle() {
+		var index = Math.floor(Math.random() * (riddles.length));
+		return riddles[index];
 	}
 
 }) ();
