@@ -6,7 +6,10 @@
 
 	window.onload = function() {
 		makeAjaxRequest("riddles.php", storeRiddles);
-		document.querySelector('#riddle').innerHTML = getRandomRiddle();
+		document.querySelector('#riddle').innerHTML = getNextRiddle();
+		document.querySelector('#answer-area').innerHTML = "";
+		document.querySelector('#answer').onclick = showAnswer;
+		document.querySelector('#next').onclick = getNextRiddle;
 	};
 
 	function makeAjaxRequest(url, methodName) {
@@ -32,6 +35,11 @@
 	function getRandomRiddle() {
 		var index = Math.floor(Math.random() * (riddles.length));
 		return riddles[index];
+	}
+
+	function getNextRiddle() {
+		currentRiddle = getRandomRiddle();
+		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
 	}
 
 }) ();
