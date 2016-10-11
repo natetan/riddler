@@ -10,7 +10,7 @@
 		document.querySelector('#answer').onclick = showAnswer;
 		document.querySelector('#next').onclick = getNextRiddle;
 		document.querySelector('.answer-area').classList.add('hide');
-		document.querySelector('#riddle').innerHTML = getNextRiddle();
+		document.querySelector('#riddle').innerHTML = setInitialRiddle();
 	};
 
 	function makeAjaxRequest(url, methodName) {
@@ -33,6 +33,12 @@
 		this.number = number;
 	}
 
+	function setInitialRiddle() {
+		currentRiddle = riddles[13];
+		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
+		document.querySelector('#riddle').innerHTML = currentRiddle.riddle;
+	}
+
 	function getRandomRiddle() {
 		var index = Math.floor(Math.random() * (riddles.length));
 		return riddles[index];
@@ -42,7 +48,6 @@
 		currentRiddle = getRandomRiddle();
 		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
 		document.querySelector('#riddle').innerHTML = currentRiddle.riddle;
-		document.querySelector('selector');
 		document.querySelector('.answer-area').classList.add('hide');
 	}
 
