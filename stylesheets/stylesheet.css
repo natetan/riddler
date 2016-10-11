@@ -135,3 +135,7 @@ a {
 .riddle-number {
   font-size: 30px;
 }
+
+.hide {
+  display: none;
+}
