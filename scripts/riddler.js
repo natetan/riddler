@@ -16,7 +16,8 @@
 	function makeAjaxRequest(url, methodName) {
 		var request = new XMLHttpRequest();
 		request.onload = methodName;
-		request.open("GET", url, true);
+		// Make the request synchronous so everything loads before it
+		request.open("GET", url, false);
 		request.send();
 	}
 
@@ -49,9 +50,7 @@
 	function showAnswer() {
 		var answer = document.querySelector('.answer-area');
 		answer.innerHTML = currentRiddle.answer;
-		console.log("answer was set (showAnswer)");
 		answer.classList.remove('hide');
-		console.log("removed hide (showAnswer)");
 	}
 
 }) ();
