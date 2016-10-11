@@ -10,6 +10,7 @@
 		document.querySelector('#answer').onclick = showAnswer;
 		document.querySelector('#next').onclick = getNextRiddle;
 		document.querySelector('.answer-area').classList.add('hide');
+		document.querySelector('#riddle').innerHTML = getNextRiddle();
 	};
 
 	function makeAjaxRequest(url, methodName) {
@@ -24,7 +25,6 @@
 		for (var i = 0; i < data.length; i++) {
 			riddles[i] = new riddle(data[i].riddle, data[i].answer, data[i].number );
 		}
-		document.querySelector('#riddle').innerHTML = getNextRiddle();
 	}
 
 	function riddle(riddle, answer, number) {
