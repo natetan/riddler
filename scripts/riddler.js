@@ -40,6 +40,15 @@
 	function getNextRiddle() {
 		currentRiddle = getRandomRiddle();
 		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
+		document.querySelector('#riddle').innerHTML = currentRiddle.riddle;
+		document.querySelector('selector');
+		document.querySelector('#answer-area').classList.add('hide');
+	}
+
+	function showAnswer() {
+		var answer = document.querySelector('.answer-area');
+		answer.innerHTML = "test";
+		answer.classList.remove('hide');
 	}
 
 }) ();
