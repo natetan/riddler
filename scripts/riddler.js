@@ -10,6 +10,7 @@
 		document.querySelector('#answer-area').innerHTML = "";
 		document.querySelector('#answer').onclick = showAnswer;
 		document.querySelector('#next').onclick = getNextRiddle;
+		document.querySelector('.answer-area').classList.add('hide');
 	};
 
 	function makeAjaxRequest(url, methodName) {
@@ -42,13 +43,15 @@
 		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
 		document.querySelector('#riddle').innerHTML = currentRiddle.riddle;
 		document.querySelector('selector');
-		document.querySelector('#answer-area').classList.add('hide');
+		document.querySelector('.answer-area').classList.add('hide');
 	}
 
 	function showAnswer() {
 		var answer = document.querySelector('.answer-area');
-		answer.innerHTML = "test";
+		answer.innerHTML = currentRiddle.answer;
+		console.log("answer was set (showAnswer)");
 		answer.classList.remove('hide');
+		console.log("removed hide (showAnswer)");
 	}
 
 }) ();
