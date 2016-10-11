@@ -23,9 +23,9 @@
 		document.querySelector('#start').classList.add('hide');
 		document.querySelector('#answer').classList.remove('hide');
 		document.querySelector('#next').classList.remove('hide');
-		document.querySelector('#riddle').innerHTML = " What is in seasons, seconds, centuries and minutes but not in decades, years or days?";
-		document.querySelector('.riddle-number').innerHTML = "Riddle #13";
-		document.querySelector('.answer-area').innerHTML = "The letter ‘n’.";
+		var text = getNextRiddle();
+		document.querySelector('#riddle').innerHTML = text;
+		console.log(riddles.length);
 	}
 
 	function storeRiddles() {
@@ -47,6 +47,7 @@
 	}
 
 	function getNextRiddle() {
+		console.log(riddles.length);
 		currentRiddle = getRandomRiddle();
 		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
 		document.querySelector('#riddle').innerHTML = currentRiddle.riddle;
