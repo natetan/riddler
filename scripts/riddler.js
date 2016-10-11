@@ -9,8 +9,7 @@
 		document.querySelector('#answer-area').innerHTML = "";
 		document.querySelector('#answer').onclick = showAnswer;
 		document.querySelector('#next').onclick = getNextRiddle;
-		document.querySelector('.answer-area').classList.add('hide');
-		document.querySelector('#riddle').innerHTML = setInitialRiddle();
+		document.querySelector('#start').onclick = start;
 	};
 
 	function makeAjaxRequest(url, methodName) {
@@ -18,6 +17,13 @@
 		request.onload = methodName;
 		request.open("GET", url, true);
 		request.send();
+	}
+
+	function start() {
+		document.querySelector('#start').classList.add('hide');
+		document.querySelector('#answer').classList.remove('hide');
+		document.querySelector('#next').classList.remove('hide');
+		document.querySelector('#riddle').innerHTML = getNextRiddle();
 	}
 
 	function storeRiddles() {
@@ -31,12 +37,6 @@
 		this.riddle = riddle;
 		this.answer = answer;
 		this.number = number;
-	}
-
-	function setInitialRiddle() {
-		currentRiddle = riddles[13];
-		document.querySelector('.riddle-number').innerHTML = "Riddle #" + currentRiddle.number;
-		document.querySelector('#riddle').innerHTML = currentRiddle.riddle;
 	}
 
 	function getRandomRiddle() {
