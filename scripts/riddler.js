@@ -24,6 +24,7 @@
 		document.querySelector('#answer').classList.remove('hide');
 		document.querySelector('#next').classList.remove('hide');
 		var text = getNextRiddle();
+		console.log(text);
 		document.querySelector('#riddle').innerHTML = text;
 		console.log(riddles.length);
 	}
@@ -42,8 +43,11 @@
 	}
 
 	function getRandomRiddle() {
-		var index = Math.floor(Math.random() * (riddles.length));
-		return riddles[index];
+		console.log('get rand');
+		console.log(riddles.length);
+		var random = Math.floor(Math.random() * (riddles.length));
+		console.log(riddles[random]);
+		return riddles[random];
 	}
 
 	function getNextRiddle() {
