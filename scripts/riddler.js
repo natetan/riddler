@@ -23,7 +23,7 @@
 	function storeRiddles() {
 		var data = JSON.parse(this.responseText);
 		for (var i = 0; i < data.length; i++) {
-			riddles[i] = new riddle(riddles[i].riddle, riddles[i].answer, riddles[i].number );
+			riddles[i] = new riddle(data[i].riddle, data[i].answer, data[i].number );
 		}
 	}
 
