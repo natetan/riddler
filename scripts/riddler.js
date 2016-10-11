@@ -6,7 +6,6 @@
 
 	window.onload = function() {
 		makeAjaxRequest("riddles.php", storeRiddles);
-		document.querySelector('#riddle').innerHTML = getNextRiddle();
 		document.querySelector('#answer-area').innerHTML = "";
 		document.querySelector('#answer').onclick = showAnswer;
 		document.querySelector('#next').onclick = getNextRiddle;
@@ -16,8 +15,7 @@
 	function makeAjaxRequest(url, methodName) {
 		var request = new XMLHttpRequest();
 		request.onload = methodName;
-		// Make the request synchronous so everything loads before it
-		request.open("GET", url, false);
+		request.open("GET", url, true);
 		request.send();
 	}
 
@@ -26,6 +24,7 @@
 		for (var i = 0; i < data.length; i++) {
 			riddles[i] = new riddle(data[i].riddle, data[i].answer, data[i].number );
 		}
+		document.querySelector('#riddle').innerHTML = getNextRiddle();
 	}
 
 	function riddle(riddle, answer, number) {
