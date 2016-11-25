@@ -26,6 +26,13 @@ $(document).ready(function() {
 		});
 	}
 
+	function start() {
+		$('#start').addClass('hide');
+		$('#answer').removeClass('hide');
+		$('#next').removeClass('hide');
+		getNextRiddle();
+	}
+
 	function riddle(riddle, answer, number) {
 		this.riddle = riddle;
 		this.answer = answer;
