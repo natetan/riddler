@@ -16,7 +16,7 @@ $(document).ready(function() {
 			context: document.body,
 			dataType: 'json',
 			success: function(response) {
-				for (var i = 0; i < response.length; i++) {
+				for (var i in response) {
 					riddles[i] = new riddle(response[i].riddle, response[i].answer, response[i].number );
 				}
 			}
