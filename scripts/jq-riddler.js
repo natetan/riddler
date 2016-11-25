@@ -3,13 +3,11 @@ $(document).ready(function() {
 	var riddles = new Array();
 	var currentRiddle;
 
-	window.onload = function() {
-		makeAjaxRequest('riddles.php');
-		$('#answer-area').html('');
-		$('#answer').on('click', showAnswer);
-		$('#next').on('click', getNextRiddle);
-		$('#start').on('click', start);
-	};
+	makeAjaxRequest('riddles.php');
+	$('#answer-area').html('');
+	$('#answer').on('click', showAnswer);
+	$('#next').on('click', getNextRiddle);
+	$('#start').on('click', start);
 
 	function makeAjaxRequest(url) {
 		$.ajax({
@@ -17,10 +15,9 @@ $(document).ready(function() {
 			type: 'GET',
 			context: document.body,
 			dataType: 'json',
-			success: function() {
-				var data = $.parseJSON(this.responseText);
-				for (var i = 0; i < data.length; i++) {
-					riddles[i] = new riddle(data[i].riddle, data[i].answer, data[i].number );
+			success: function(response) {
+				for (var i = 0; i < response.length; i++) {
+					riddles[i] = new riddle(response[i].riddle, response[i].answer, response[i].number );
 				}
 			}
 		});
@@ -47,7 +44,7 @@ $(document).ready(function() {
 	function getNextRiddle() {
 		currentRiddle = getRandomRiddle();
 		$('.riddle-number').html('Riddle #' + currentRiddle.number);
-		$('#riddle').html('currentRiddle.riddle');
+		$('#riddle').html(currentRiddle.riddle);
 		$('.answer-area').addClass('hide');
 	}
 
