@@ -9,7 +9,11 @@ $(document).ready(function() {
 	};
 
 	function makeAjaxRequest(url, methodName) {
-		
+		$.ajax({
+			url: 'riddles.php',
+			context: document.body,
+			success: methodName
+		});
 	}
 	
 });
