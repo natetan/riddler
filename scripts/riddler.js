@@ -27,9 +27,13 @@
 	}
 
 	function storeRiddles() {
-		var data = JSON.parse(this.responseText);
-		for (var i = 0; i < data.length; i++) {
-			riddles[i] = new riddle(data[i].riddle, data[i].answer, data[i].number );
+		if (this.statusCode == 200) {
+			var data = JSON.parse(this.responseText);
+			for (var i = 0; i < data.length; i++) {
+				riddles[i] = new riddle(data[i].riddle, data[i].answer, data[i].number );
+			}
+		} else {
+			console.log('Could not reach server: status code ' + this.statusCode);
 		}
 	}
 
