@@ -15,7 +15,7 @@ $(document).ready(function() {
 			type: 'GET',
 			context: document.body,
 			dataType: 'json',
-			success: callback(response),
+			success: callback,
 			statusCode: {
 				400: function() {
 					console.log('400 status code. User error.');
