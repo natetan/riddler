@@ -3,23 +3,19 @@ $(document).ready(function() {
 	var riddles = new Array();
 	var currentRiddle;
 
-	makeAjaxRequest('riddles.php');
+	request('riddles.php', storeRiddles);
 	$('#answer-area').html('');
 	$('#answer').on('click', showAnswer);
 	$('#next').on('click', getNextRiddle);
 	$('#start').on('click', start);
 
-	function makeAjaxRequest(url) {
+	function request(url, callback) {
 		$.ajax({
 			url: url,
 			type: 'GET',
 			context: document.body,
 			dataType: 'json',
-			success: function(response) {
-				for (var i in response) {
-					riddles[i] = new riddle(response[i].riddle, response[i].answer, response[i].number );
-				}
-			},
+			success: callback(response),
 			statusCode: {
 				400: function() {
 					console.log('400 status code. User error.');
@@ -32,6 +28,12 @@ $(document).ready(function() {
 				}
 			}
 		});
+	}
+
+	function storeRiddles(response) {
+		for (var i in response) {
+			riddles[i] = new riddle(response[i].riddle, response[i].answer, response[i].number);
+		}
 	}
 
 	function start() {
