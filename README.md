@@ -45,29 +45,29 @@ function storeRiddles() {
 request('riddles.php', storeRiddles);
 
 function request(url, callback) {
-		$.ajax({
-			url: url,
-			type: 'GET',
-			context: document.body,
-			dataType: 'json',
-			success: callback,
-			statusCode: {
-				400: function() {
-					console.log('400 status code. User error.');
-				},
-				404: function() {
-					console.log('404 status code. Page not found.');
-				},
-				500: function() {
-					console.log('500 status code. Server error.');
-				}
+	$.ajax({
+		url: url,
+		type: 'GET',
+		context: document.body,
+		dataType: 'json',
+		success: callback,
+		statusCode: {
+			400: function() {
+				console.log('400 status code. User error.');
+			},
+			404: function() {
+				console.log('404 status code. Page not found.');
+			},
+			500: function() {
+				console.log('500 status code. Server error.');
 			}
-		});
-	}
-
-	function storeRiddles(response) {
-		for (var i in response) {
-			riddles[i] = new riddle(response[i].riddle, response[i].answer, response[i].number);
 		}
+	});
+}
+
+function storeRiddles(response) {
+	for (var i in response) {
+		riddles[i] = new riddle(response[i].riddle, response[i].answer, response[i].number);
 	}
+}
 ```
